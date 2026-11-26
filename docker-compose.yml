@@ -6,6 +6,11 @@ services:
       - "8000:8000"
     environment:
       DB_PATH: /data/app.db
+      # 报废重排的可选「计算耗时」（秒），仅用于放大并发演示窗口；
+      # 默认 0（不延迟）。演示并发操作时可用：
+      #   REPLAN_DELAY_SECONDS=2 docker compose up --build
+      # 或叠加 docker-compose.demo.yml。
+      REPLAN_DELAY_SECONDS: ${REPLAN_DELAY_SECONDS:-0}
     volumes:
       - reprint-data:/data
     restart: unless-stopped

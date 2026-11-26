@@ -1,0 +1,8 @@
+# 并发演示覆盖文件：给报废重排人为增加 2s 计算窗口，
+# 以便稳定演示「排程还在算时查单/确认完工」。
+# 用法：
+#   docker compose -f docker-compose.yml -f docker-compose.demo.yml up --build
+services:
+  api:
+    environment:
+      REPLAN_DELAY_SECONDS: "2"
